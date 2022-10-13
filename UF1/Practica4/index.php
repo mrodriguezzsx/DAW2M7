@@ -1,15 +1,16 @@
 <?php 
 
   $db_host = "localhost";
-  $db_nombre = "practica5";
+  $db_nombre = "practica4";
   $db_usuario = "root";
   $db_passwd = "";
 
-      $connexio = mysqli_connect($db_host, $db_usuario, $db_passwd, $db_nombre);
-      $consulta = "SELECT * FROM products";
+  $connexio = mysqli_connect($db_host, $db_usuario, $db_passwd, $db_nombre);
+  
+  $consulta = "SELECT * FROM productes";
 
-      $products = mysqli_query($connexio, $consultac);
-?>
+  $products = mysqli_query($connexio, $consulta); 
+  ?>
 
 <!doctype html>
 <html lang="en">
@@ -44,12 +45,13 @@
         <th scope="row"><?php echo $i +1 ?></th>
         <td><?php echo $products['Name'] ?></td>
         <td><?php echo $products['Description'] ?></td>
-        <td><?php echo $products['price'] ?></td>
-        <td><button type="button" class="">Edit</button></td>
-        <td><button type="button">Delete</button></td>
+        <td><?php echo $products['Price'] ?></td>
+        <td><a href="edit.php?id=<?php echo $product['NumID']?>"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
+        <td><a href="delete.php?id=<?php echo $product['NumID']?>"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
       </tr>
     <?php } ?>
   </tbody>
+  <a href="form_product.php"><button type="button">Afegir</button></a>
 </table>
   </body>
 </html>
